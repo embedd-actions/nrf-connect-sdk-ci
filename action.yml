@@ -1,0 +1,24 @@
+name: 'NRF Connect SDK'
+description: 'Building nrf connect sdk projects'
+inputs:
+  board:  # id of input
+    description: 'Board for build'
+    required: true
+  build_dir:
+    description: 'Building directory'
+    required: true
+    default: 'build'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - west 
+    - build
+    - --build-dir 
+    - ${{ inputs.build_dir }}
+    - .
+    - --pristine
+    - --no-sysbuild
+    - --board 
+    - ${{ inputs.board }}
+    

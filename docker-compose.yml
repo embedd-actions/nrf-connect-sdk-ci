@@ -1,0 +1,11 @@
+version: '2'
+
+services:
+  nrf:
+    container_name: nrf
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - NRF_CONNECT_TAG=v2.4.2
+        - ZEPHYR_TAG=0.16.1
