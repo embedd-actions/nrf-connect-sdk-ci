@@ -69,7 +69,8 @@ RUN ARCH="$(dpkg --print-architecture)" && \
     rm zephyr-sdk-${ZEPHYR_TAG}_linux-$ZEPHYR_ARCH.tar.${ZEPHYR_ARCHIVE_EXTENSION} && \
     apt-get remove python3-pip build-essential -y && \
     apt autoremove -y && \
-    apt autoclean -y
+    apt autoclean -y && \
+    find ./zephyr-sdk-${ZEPHYR_TAG} -maxdepth 1 -not -name 'zephyr-sdk-${ZEPHYR_TAG}' -not -name 'arm-zephyr-eabi' -not -name 'cmake' -not -name 'sdk_*' -not -name '*.sh' -exec rm -R {} \;
 
 COPY ./entrypoint.sh /bin/
 
