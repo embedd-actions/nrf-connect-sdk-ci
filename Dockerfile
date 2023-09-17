@@ -2,10 +2,13 @@ FROM debian:stable-slim
 
 #ARG ARCH=amd64
 ARG NRF_CONNECT_TAG=v2.3.0
+# Should be for selected NRF_CONNECT_TAG
+ARG ZEPHYR_NEEDED_TAG=0.15.2
 # For new versions - xz
 ARG ZEPHYR_ARCHIVE_EXTENSION=gz
-# Should be for selected NRF_CONNECT_TAG
-ENV ZEPHYR_TAG=0.15.2
+
+# For entrypoint file
+ENV ZEPHYR_TAG=$ZEPHYR_NEEDED_TAG
 
 RUN ARCH="$(dpkg --print-architecture)" && \
     case $ARCH in \
