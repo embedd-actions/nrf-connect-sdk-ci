@@ -7,5 +7,6 @@ services:
       context: .
       dockerfile: Dockerfile
       args:
-        - NRF_CONNECT_TAG=v2.4.2
-        - ZEPHYR_TAG=0.16.1
+        - NRF_CONNECT_TAG=v2.3.0
+        - ZEPHYR_NEEDED_TAG=0.15.2
+        - ZEPHYR_ARCHIVE_EXTENSION=gz
