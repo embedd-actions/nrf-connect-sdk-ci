@@ -39,8 +39,6 @@ RUN ARCH="$(dpkg --print-architecture)" && \
     file \
     make \
     gcc \
-    gcc-multilib \
-    g++-multilib \
     libsdl2-dev \
     libmagic1 \
     unzip \
