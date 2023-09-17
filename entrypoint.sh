@@ -10,7 +10,7 @@
 
 . /root/gn/zephyr/zephyr-env.sh
 /bin/bash /root/zephyr-sdk-${ZEPHYR_TAG}/setup.sh -t arm-zephyr-eabi
-/bin/bash /root/zephyr-sdk-${ZEPHYR_TAG}/setup.sh -h
+#/bin/bash /root/zephyr-sdk-${ZEPHYR_TAG}/setup.sh -h
 /bin/bash /root/zephyr-sdk-${ZEPHYR_TAG}/setup.sh -c
 
 $@
