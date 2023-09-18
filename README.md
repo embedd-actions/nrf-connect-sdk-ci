@@ -20,3 +20,18 @@ jobs:
         build_dir: build
 
 ```
+
+## How to specify a version of NRF Connect SDK
+
+To select the specific version of  NRF Connect SDK you
+can reference a specific version of GitHub action:
+```
+uses: embedd-actions/nrf-connect-sdk-prebuild-ci@v2.3.0
+uses: embedd-actions/nrf-connect-sdk-prebuild-ci@v2.4.0
+```
+
+## List of available tags
+
+```
+v2.3.0
+```
