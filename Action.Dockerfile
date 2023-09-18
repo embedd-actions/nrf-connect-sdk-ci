@@ -1,1 +1,1 @@
-FROM sergeyladanov/nrf-connect-sdk:v2.3.0
+FROM sergeyladanov/nrf-connect-sdk:v2.4.0
