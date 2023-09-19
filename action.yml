@@ -10,7 +10,7 @@ inputs:
     default: 'build'
 runs:
   using: 'docker'
-  image: 'Dockerfile'
+  image: 'Action.Dockerfile'
   args:
     - west 
     - build

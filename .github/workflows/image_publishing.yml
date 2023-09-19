@@ -3,7 +3,7 @@ name: Publish image
 on:
   push:
     tags:
-    - '*'
+    - 'v*.*.*'
 
 jobs:
   build:
@@ -36,6 +36,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
+          file: Image.Dockerfile
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           platforms: linux/amd64,linux/arm64
