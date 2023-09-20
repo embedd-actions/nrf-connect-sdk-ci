@@ -5,7 +5,7 @@ services:
     container_name: nrf
     build:
       context: .
-      dockerfile: Image.Dockerfile
+      dockerfile: Dockerfile
       args:
         - NRF_CONNECT_TAG=v2.3.0
         - ZEPHYR_NEEDED_TAG=0.15.2

@@ -1,5 +1,8 @@
 name: 'NRF Connect SDK CI action'
 description: 'Building nrf connect sdk projects'
+branding:
+  color: blue
+  icon: Link
 inputs:
   board:  # id of input
     description: 'Board for build'
@@ -10,7 +13,7 @@ inputs:
     default: 'build'
 runs:
   using: 'docker'
-  image: 'Action.Dockerfile'
+  image: 'docker://sergeyladanov/nrf-connect-sdk:v2.3.0'
   args:
     - west 
     - build
