@@ -10,7 +10,7 @@ inputs:
     default: 'build'
 runs:
   using: 'docker'
-  image: 'Action.Dockerfile'
+  image: 'docker://sergeyladanov/nrf-connect-sdk:v2.3.0'
   args:
     - west 
     - build

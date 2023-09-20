@@ -27,14 +27,10 @@ To select the specific version of  NRF Connect SDK you
 can reference a specific version of GitHub action:
 ```
 uses: embedd-actions/nrf-connect-sdk-ci@v2.3.0
-uses: embedd-actions/nrf-connect-sdk-ci@v2.4.0
 ```
 
 ## List of available tags
 
 ```
 v2.3.0
-v2.4.0
-v2.4.1
-v2.4.2
 ```
