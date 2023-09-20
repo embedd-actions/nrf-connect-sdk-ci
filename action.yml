@@ -1,5 +1,8 @@
 name: 'NRF Connect SDK CI action'
 description: 'Building nrf connect sdk projects'
+branding:
+  color: blue
+  icon: Link
 inputs:
   board:  # id of input
     description: 'Board for build'
