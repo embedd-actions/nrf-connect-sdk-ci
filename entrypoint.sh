@@ -1,16 +1,7 @@
 #!/bin/bash
 
-#echo 'export PATH=root/gn:"$PATH"' >> ${HOME}/.bashrc
+. /workdir/ncs/zephyr/zephyr-env.sh
+/bin/bash /workdir/zephyr-sdk-${ZEPHYR_TAG}/setup.sh -t arm-zephyr-eabi
+/bin/bash /workdir/zephyr-sdk-${ZEPHYR_TAG}/setup.sh -c
 
-#. ${HOME}/.bashrc
-
-#echo 'export PATH=root/.local/bin:"$PATH"' >> ~/.bashrc
-
-#. ~/.bashrc
-
-. /root/gn/zephyr/zephyr-env.sh
-/bin/bash /root/zephyr-sdk-${ZEPHYR_TAG}/setup.sh -t arm-zephyr-eabi
-#/bin/bash /root/zephyr-sdk-${ZEPHYR_TAG}/setup.sh -h
-/bin/bash /root/zephyr-sdk-${ZEPHYR_TAG}/setup.sh -c
-
-$@
+exec $@
