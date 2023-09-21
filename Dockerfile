@@ -64,14 +64,15 @@ RUN ARCH="$(dpkg --print-architecture)" && \
     pip3 install -r nrf/scripts/requirements.txt --break-system-packages && \
     pip3 install -r bootloader/mcuboot/scripts/requirements.txt --break-system-packages && \
     cd ~ && \
-    wget https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v${ZEPHYR_TAG}/zephyr-sdk-${ZEPHYR_TAG}_linux-${ZEPHYR_ARCH}.tar.${ZEPHYR_ARCHIVE_EXTENSION} && \
+    wget https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v${ZEPHYR_TAG}/zephyr-sdk-${ZEPHYR_TAG}_linux-${ZEPHYR_ARCH}_minimal.tar.${ZEPHYR_ARCHIVE_EXTENSION} && \
     (wget -O - https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v${ZEPHYR_TAG}/sha256.sum | shasum --check --ignore-missing) && \
-    tar xvf zephyr-sdk-${ZEPHYR_TAG}_linux-$ZEPHYR_ARCH.tar.${ZEPHYR_ARCHIVE_EXTENSION} && \
-    rm zephyr-sdk-${ZEPHYR_TAG}_linux-$ZEPHYR_ARCH.tar.${ZEPHYR_ARCHIVE_EXTENSION} && \
+    tar xvf zephyr-sdk-${ZEPHYR_TAG}_linux-${ZEPHYR_ARCH}_minimal.tar.${ZEPHYR_ARCHIVE_EXTENSION} && \
+    rm zephyr-sdk-${ZEPHYR_TAG}_linux-${ZEPHYR_ARCH}_minimal.tar.${ZEPHYR_ARCHIVE_EXTENSION} && \
     apt-get remove python3-pip build-essential -y && \
     apt autoremove -y && \
     apt autoclean -y && \
-    find ./zephyr-sdk-${ZEPHYR_TAG} -maxdepth 1 -not -name zephyr-sdk-${ZEPHYR_TAG} -not -name 'arm-zephyr-eabi' -not -name 'cmake' -not -name 'sdk_*' -not -name '*.sh' -exec rm -R {} \;
+    ./zephyr-sdk-${ZEPHYR_TAG}/setup.sh -t arm-zephyr-eabi && \
+    ./zephyr-sdk-${ZEPHYR_TAG}/setup.sh -c
 
 COPY ./entrypoint.sh /bin/
 
