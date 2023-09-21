@@ -1,11 +1,11 @@
 FROM debian:stable-slim
 
 #ARG ARCH=amd64
-ARG NRF_CONNECT_TAG=v2.4.2
+ARG NRF_CONNECT_TAG=v2.3.0
 # Should be for selected NRF_CONNECT_TAG
-ARG ZEPHYR_NEEDED_TAG=0.16.0
+ARG ZEPHYR_NEEDED_TAG=0.15.2
 # For new versions - xz
-ARG ZEPHYR_ARCHIVE_EXTENSION=xz
+ARG ZEPHYR_ARCHIVE_EXTENSION=gz
 
 # For entrypoint file
 ENV ZEPHYR_TAG=$ZEPHYR_NEEDED_TAG
@@ -47,23 +47,22 @@ RUN ARCH="$(dpkg --print-architecture)" && \
     -y && \
     rm -rf /var/cache/apt && \
     pip3 install --upgrade pip --break-system-packages && \
-    mkdir ${HOME}/gn && \
-    cd ${HOME}/gn && \
+    mkdir /workdir && \
+    cd /usr/bin && \
     wget -O gn.zip https://chrome-infra-packages.appspot.com/dl/gn/gn/linux-$ARCH/+/latest &&\
     unzip gn.zip && \
     rm gn.zip && \
-    echo 'export PATH=${HOME}/gn:"$PATH"' >> ${HOME}/.bashrc && \
-    . ${HOME}/.bashrc && \
     pip3 install west --break-system-packages && \
-    echo 'export PATH=~/.local/bin:"$PATH"' >> ~/.bashrc && \
-    . ~/.bashrc && \
+    cd /workdir && \
+    mkdir ncs && \
+    cd ncs && \
     west init -m https://github.com/nrfconnect/sdk-nrf --mr $NRF_CONNECT_TAG && \
     west update && \
     west zephyr-export && \
     pip3 install -r zephyr/scripts/requirements.txt --break-system-packages && \
     pip3 install -r nrf/scripts/requirements.txt --break-system-packages && \
     pip3 install -r bootloader/mcuboot/scripts/requirements.txt --break-system-packages && \
-    cd ~ && \
+    cd /workdir && \
     wget https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v${ZEPHYR_TAG}/zephyr-sdk-${ZEPHYR_TAG}_linux-${ZEPHYR_ARCH}_minimal.tar.${ZEPHYR_ARCHIVE_EXTENSION} && \
     (wget -O - https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v${ZEPHYR_TAG}/sha256.sum | shasum --check --ignore-missing) && \
     tar xvf zephyr-sdk-${ZEPHYR_TAG}_linux-${ZEPHYR_ARCH}_minimal.tar.${ZEPHYR_ARCHIVE_EXTENSION} && \
@@ -74,8 +73,8 @@ RUN ARCH="$(dpkg --print-architecture)" && \
     ./zephyr-sdk-${ZEPHYR_TAG}/setup.sh -t arm-zephyr-eabi && \
     ./zephyr-sdk-${ZEPHYR_TAG}/setup.sh -c
 
-COPY ./entrypoint.sh /bin/
+ADD entrypoint.sh /entrypoint.sh
 
-RUN chmod +x /bin/entrypoint.sh
+RUN chmod +x /entrypoint.sh
 
-ENTRYPOINT [ "/bin/entrypoint.sh" ]
+ENTRYPOINT [ "/entrypoint.sh" ]
