@@ -18,6 +18,7 @@ RUN ARCH="$(dpkg --print-architecture)" && \
     "arm64") \
         ZEPHYR_ARCH="aarch64" \
         ;; \
+    # Get nessecary packages
     esac && \
     apt-get update && \
     apt-get install \
@@ -45,6 +46,7 @@ RUN ARCH="$(dpkg --print-architecture)" && \
     build-essential \
     libgit2-dev \
     -y && \
+    # Remove apt cache
     rm -rf /var/cache/apt && \
     pip3 install --upgrade pip --break-system-packages && \
     # Create work directory
