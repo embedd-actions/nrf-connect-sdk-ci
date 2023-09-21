@@ -47,15 +47,19 @@ RUN ARCH="$(dpkg --print-architecture)" && \
     -y && \
     rm -rf /var/cache/apt && \
     pip3 install --upgrade pip --break-system-packages && \
+    # Create work directory
     mkdir /workdir && \
+    # Get GN tools for matter
     cd /usr/bin && \
     wget -O gn.zip https://chrome-infra-packages.appspot.com/dl/gn/gn/linux-$ARCH/+/latest &&\
     unzip gn.zip && \
     rm gn.zip && \
+    # Install west
     pip3 install west --break-system-packages && \
     cd /workdir && \
     mkdir ncs && \
     cd ncs && \
+    # Get NRF SDK code
     west init -m https://github.com/nrfconnect/sdk-nrf --mr $NRF_CONNECT_TAG && \
     west update && \
     west zephyr-export && \
@@ -63,13 +67,16 @@ RUN ARCH="$(dpkg --print-architecture)" && \
     pip3 install -r nrf/scripts/requirements.txt --break-system-packages && \
     pip3 install -r bootloader/mcuboot/scripts/requirements.txt --break-system-packages && \
     cd /workdir && \
+    # Get toolchain (minimal)
     wget https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v${ZEPHYR_TAG}/zephyr-sdk-${ZEPHYR_TAG}_linux-${ZEPHYR_ARCH}_minimal.tar.${ZEPHYR_ARCHIVE_EXTENSION} && \
     (wget -O - https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v${ZEPHYR_TAG}/sha256.sum | shasum --check --ignore-missing) && \
     tar xvf zephyr-sdk-${ZEPHYR_TAG}_linux-${ZEPHYR_ARCH}_minimal.tar.${ZEPHYR_ARCHIVE_EXTENSION} && \
     rm zephyr-sdk-${ZEPHYR_TAG}_linux-${ZEPHYR_ARCH}_minimal.tar.${ZEPHYR_ARCHIVE_EXTENSION} && \
+    # Remove unused packages
     apt-get remove python3-pip build-essential -y && \
     apt autoremove -y && \
     apt autoclean -y && \
+    # Install arm-zephyr-eabi toolchain for NRF
     ./zephyr-sdk-${ZEPHYR_TAG}/setup.sh -t arm-zephyr-eabi && \
     ./zephyr-sdk-${ZEPHYR_TAG}/setup.sh -c
 
