@@ -36,4 +36,5 @@ uses: embedd-actions/nrf-connect-sdk-ci@v2.4.0
 v2.3.0
 v2.4.0
 v2.4.1
+v2.4.2
 ```
