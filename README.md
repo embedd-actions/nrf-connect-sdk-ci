@@ -14,7 +14,7 @@ jobs:
 
 
     - name: Build
-      uses: embedd-actions/nrf-connect-sdk-ci@v2.5.0
+      uses: embedd-actions/nrf-connect-sdk-ci@v2.5.1
       with:
         board: nrf52833dk_nrf52833
         build_dir: build
@@ -38,4 +38,5 @@ v2.4.0
 v2.4.1
 v2.4.2
 v2.5.0
+v2.5.1
 ```
