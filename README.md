@@ -14,7 +14,7 @@ jobs:
 
 
     - name: Build
-      uses: embedd-actions/nrf-connect-sdk-ci@v2.6.1
+      uses: embedd-actions/nrf-connect-sdk-ci@v2.7.0
       with:
         board: nrf52833dk_nrf52833
         build_dir: build
@@ -29,6 +29,7 @@ can reference a specific version of GitHub action:
 uses: embedd-actions/nrf-connect-sdk-ci@v2.3.0
 uses: embedd-actions/nrf-connect-sdk-ci@v2.4.0
 uses: embedd-actions/nrf-connect-sdk-ci@v2.6.1
+uses: embedd-actions/nrf-connect-sdk-ci@v2.7.0
 ```
 
 ## List of available tags
@@ -41,4 +42,5 @@ v2.4.2
 v2.5.0
 v2.5.1
 v2.6.1
+v2.7.0
 ```
