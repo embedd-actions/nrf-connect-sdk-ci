@@ -14,9 +14,9 @@ jobs:
 
 
     - name: Build
-      uses: embedd-actions/nrf-connect-sdk-ci@v2.7.0
+      uses: embedd-actions/nrf-connect-sdk-ci@v2.8.0
       with:
-        board: nrf52833dk_nrf52833
+        board: <DK Board Name>
         build_dir: build
 
 ```
@@ -30,6 +30,7 @@ uses: embedd-actions/nrf-connect-sdk-ci@v2.3.0
 uses: embedd-actions/nrf-connect-sdk-ci@v2.4.0
 uses: embedd-actions/nrf-connect-sdk-ci@v2.6.1
 uses: embedd-actions/nrf-connect-sdk-ci@v2.7.0
+uses: embedd-actions/nrf-connect-sdk-ci@v2.8.0
 ```
 
 ## List of available tags
@@ -43,4 +44,5 @@ v2.5.0
 v2.5.1
 v2.6.1
 v2.7.0
+v2.8.0
 ```
