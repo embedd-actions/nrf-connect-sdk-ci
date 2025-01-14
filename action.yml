@@ -24,4 +24,5 @@ runs:
     - --no-sysbuild
     - --board 
     - ${{ inputs.board }}
-    
+    - --
+    - -DBOARD_ROOT=/github/workspace
