@@ -10,11 +10,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
 
     - name: Build
-      uses: embedd-actions/nrf-connect-sdk-ci@v3.0.0
+      uses: embedd-actions/nrf-connect-sdk-ci@v3.0.1
       with:
         board: <DK Board Name>
         build_dir: build
@@ -34,6 +34,7 @@ uses: embedd-actions/nrf-connect-sdk-ci@v2.8.0
 uses: embedd-actions/nrf-connect-sdk-ci@v2.9.0
 uses: embedd-actions/nrf-connect-sdk-ci@v2.9.1
 uses: embedd-actions/nrf-connect-sdk-ci@v3.0.0
+uses: embedd-actions/nrf-connect-sdk-ci@v3.0.1
 ```
 
 ## List of available tags
@@ -52,4 +53,5 @@ v2.8.0
 v2.9.0
 v2.9.1
 v3.0.0
+v3.0.1
 ```
