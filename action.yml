@@ -11,17 +11,12 @@ inputs:
     description: 'Building directory'
     required: true
     default: 'build'
+  sysbuild:
+    description: 'Use sysbuild (true/false)'
+    required: false
+    default: 'false'
 runs:
   using: 'docker'
-  image: 'Dockerfile'
-  args:
-    - west 
-    - build
-    - --build-dir 
-    - ${{ inputs.build_dir }}
-    - .
-    - --pristine
-    - --no-sysbuild
-    - --board 
-    - ${{ inputs.board }}
+  image: 'docker://ghcr.io/jonathansmithinfact/nrf-connect-sdk-ci:v3.0.2'
     
+

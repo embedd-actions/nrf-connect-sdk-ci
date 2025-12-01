@@ -18,6 +18,7 @@ jobs:
       with:
         board: <DK Board Name>
         build_dir: build
+        sysbuild: 'true/false'
 
 ```
 
