@@ -48,7 +48,7 @@ RUN ARCH="$(dpkg --print-architecture)" && \
     -y && \
     # Remove apt cache
     rm -rf /var/cache/apt && \
-    pip3 install --upgrade pip --break-system-packages && \
+    # pip3 install --upgrade pip --break-system-packages && \
     # Create work directory
     mkdir /workdir && \
     # Get GN tools for matter
