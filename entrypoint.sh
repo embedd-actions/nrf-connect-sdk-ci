@@ -4,4 +4,5 @@
 /bin/bash /workdir/zephyr-sdk-${ZEPHYR_TAG}/setup.sh -t arm-zephyr-eabi
 /bin/bash /workdir/zephyr-sdk-${ZEPHYR_TAG}/setup.sh -c
 
-exec $@
+# exec $@
+exec bash -c "$@"
