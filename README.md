@@ -14,7 +14,7 @@ jobs:
 
 
     - name: Build
-      uses: embedd-actions/nrf-connect-sdk-ci@v3.0.1
+      uses: embedd-actions/nrf-connect-sdk-ci@v3.0.2
       with:
         board: <DK Board Name>
         build_dir: build
