@@ -11,6 +11,10 @@ inputs:
     description: 'Building directory'
     required: true
     default: 'build'
+  add_flags:
+    description: 'Additional flags'
+    required: true
+    default: '--no-sysbuild'
 runs:
   using: 'docker'
   image: 'docker://sergeyladanov/nrf-connect-sdk:v3.0.1'
@@ -21,7 +25,7 @@ runs:
     - ${{ inputs.build_dir }}
     - .
     - --pristine
-    - --no-sysbuild
     - --board 
     - ${{ inputs.board }}
+    - ${{ input.add_flags }}
     
