@@ -17,7 +17,7 @@ inputs:
     default: '--no-sysbuild'
 runs:
   using: 'docker'
-  image: 'docker://sergeyladanov/nrf-connect-sdk:v3.0.1'
+  image: 'docker://sergeyladanov/nrf-connect-sdk:v3.0.2'
   args:
     - west 
     - build
