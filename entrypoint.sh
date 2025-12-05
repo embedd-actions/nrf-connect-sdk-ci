@@ -5,4 +5,4 @@
 /bin/bash /workdir/zephyr-sdk-${ZEPHYR_TAG}/setup.sh -c
 
 # exec $@
-exec bash -c "$@"
+exec "$@"
